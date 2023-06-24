@@ -19,9 +19,9 @@ const generateJWT = (payload = {}) => {
 const decodeJWT = (req, res, next) => {
   try {
     const token = req.headers.authorization;
-    
-    if(!token) throw new Error('Please login First!');
-    if(token.split(' ')[0] !== "Bearer") throw new Error('Invalid Token!');
+
+    if (!token) throw new Error('Please login First!');
+    if (token.split(' ')[0] !== "Bearer") throw new Error('Invalid Token!');
 
     const authenticationToken = token.split(' ')[1];
     const decoded = jwt.verify(authenticationToken, config.jwt.signature);
@@ -35,7 +35,20 @@ const decodeJWT = (req, res, next) => {
   }
 }
 
+const roleBasedCheck = (allowedRole = []) => {
+  return (req, res, next) => {
+    const { user } = req;
+    if (!allowedRole.includes(user.role)) {
+      logger.error(`Role based verification failed for ${user.name}`);
+      return res.status(401).json({ error: 'You don\'t have permission to access this.' });
+    }
+    logger.info(`Role based verification done for ${user.name}`);
+    next();
+  };
+}
+
 module.exports = {
   generateJWT,
-  decodeJWT
+  decodeJWT,
+  roleBasedCheck
 }

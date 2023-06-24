@@ -15,7 +15,12 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    duration: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
+    },
   }, {
     tableName: 'movie'
   });
