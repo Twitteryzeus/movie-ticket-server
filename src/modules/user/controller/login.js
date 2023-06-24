@@ -39,6 +39,7 @@ const login = async (req, res) => {
     response.message = error?.message;
     response.success = false;
     response.code = 500;
+    logger.error(`ERROR > LOGIN > ${error.message}`);
   }
 
   return res.status(response.code).json(response);

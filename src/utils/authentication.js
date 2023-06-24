@@ -19,17 +19,19 @@ const generateJWT = (payload = {}) => {
 const decodeJWT = (req, res, next) => {
   try {
     const token = req.headers.authorization;
-    if(token.split(' ')[0] !== "Bearer") throw new Error('Invalid Token');
+    
+    if(!token) throw new Error('Please login First!');
+    if(token.split(' ')[0] !== "Bearer") throw new Error('Invalid Token!');
 
     const authenticationToken = token.split(' ')[1];
     const decoded = jwt.verify(authenticationToken, config.jwt.signature);
-    req.user = decoded;
+    req.user = decoded.data;
 
     logger.info('JWT decoded successfully');
     return next();
   } catch (error) {
     logger.error(`ERROR > DECODE JWT > ${error?.message}`);
-    throw error;
+    res.status(500).json({ error: error.message })
   }
 }
 
