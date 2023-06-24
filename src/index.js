@@ -27,7 +27,7 @@ sequelize
 
         // After sync is completed. Start the express server.
         app.listen(config.port, () => {
-          logger.info('Server is started')
+          logger.info('Server is started');
           console.log(`Server is running on http://localhost:${config.port}/`);
         })
       })
