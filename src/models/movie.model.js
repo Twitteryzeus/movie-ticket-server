@@ -20,5 +20,22 @@ module.exports = (sequelize) => {
     tableName: 'movie'
   });
 
+  // Define relation here.
+  Movie.associate = function (models) {
+    Movie.hasMany(models.Show, {
+      as: 'shows',
+      foreignKey: 'movieId',
+      constraints: true,
+      onDelete: 'CASCADE',
+    });
+
+    Movie.hasMany(models.Ticket, {
+      as: 'tickets',
+      foreignKey: 'movieId',
+      constraints: true,
+      onDelete: 'CASCADE',
+    });
+  }
+
   return Movie;
 };
