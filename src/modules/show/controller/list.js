@@ -1,4 +1,5 @@
 const { sequelize } = require('../../../models');
+const Joi = require('joi');
 const logger = require("../../../utils/logger");
 
 const list = async (req, res) => {
@@ -12,7 +13,21 @@ const list = async (req, res) => {
   try {
     const { models } = sequelize;
     const { Show: ShowModel } = models;
-    const { user, query, params } = req;
+    const { user, params } = req;
+
+    const movieCreateSchema = Joi.object({
+      movieId: Joi.number().required(),
+    });
+
+    const { error } = movieCreateSchema.validate(params);
+    if (error) {
+      response.message = error?.message;
+      response.success = false;
+      response.code = 500;
+
+      logger.error(`ERROR > SHOW > LIST > ${error.message}`);
+      return res.status(response.code).json(response);
+    }
 
     const showData = await ShowModel.findAll({
       where: {
