@@ -3,10 +3,12 @@ const cors = require('cors');
 const config = require('./config');
 const logger = require('./utils/logger');
 const { sequelize } = require('./models');
+const routes = require('./modules');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/v1', routes);
 
 // Define your routes and handlers here
 app.get('/', (req, res) => {
