@@ -1,6 +1,7 @@
 const logger = require("../../../utils/logger");
 const { sequelize } = require('../../../models');
 const Joi = require('joi');
+const showServiceFunctions = require('../../show/service');
 
 const create = async (req, res) => {
   const response = {
@@ -32,6 +33,8 @@ const create = async (req, res) => {
     }
 
     const movieInstance = await MovieModel.create(payload);
+    await showServiceFunctions.addDummyShows(movieInstance.id);
+    
     response.data = movieInstance;
     logger.info(`Movie created successfully by ${user.name}`);
   } catch (error) {
