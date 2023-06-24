@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const config = require('./config');
 
 const app = express();
 app.use(cors());
@@ -10,7 +11,6 @@ app.get('/', (req, res) => {
   res.send('Hello, Express!');
 });
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}/`);
+app.listen(config.port, () => {
+  console.log(`Server is running on http://localhost:${config.port}/`);
 })
