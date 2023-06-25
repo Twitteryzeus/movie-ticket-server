@@ -1,16 +1,17 @@
 
 # movie-ticket-server
 
-This is a Node.js server built using Node.js, Express.js, and Sequelize. It provides a starting point for creating a RESTful API server for movie ticket booking using these technologies.
+The Movie Ticket Server is a Node.js application built with Express and Sequelize. It serves as a backend server for managing movie tickets and related information. The application utilizes a PostgreSQL database for storing data.
 
 
 ## Features
 
-- RESTful API server for movie ticket booking
-- Express.js for handling routes and middleware
-- Sequelize ORM for database interactions
-- Sample CRUD operations on movie tickets
+- User Module: Allows authentication of users.
+- Movie Module: Manages movie details.
+- Show Module: Handles show timings and related information.
+- Ticket Module: Facilitates the booking and management of movie tickets.
 
+Additionally, the server offers endpoints to analyze the performance of movies within a specified time period. This feature enables users to evaluate the success of a movie based on its performance during a specific duration.
 
 ## Prerequisites
 
