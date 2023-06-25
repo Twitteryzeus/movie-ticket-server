@@ -75,6 +75,7 @@ const create = async (req, res) => {
 
     const insertPayload = JSON.parse(JSON.stringify(payload));
     insertPayload.customerName = user.name;
+    insertPayload.userId = user.id;
     insertPayload.ticketPrice = +showData.price * +insertPayload.seatBooked;
 
     await ShowModel.update({

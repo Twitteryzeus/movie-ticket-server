@@ -31,7 +31,7 @@ const login = async (req, res) => {
     }
 
     payload.role = config.adminEmail === payload.email ? 'ADMIN' : 'USER';
-    payload.id = hashFunction(payload.name);
+    payload.id = hashFunction(payload.email);
     response.data = generateJWT(payload);
 
     logger.info(`Login done successfully for ${payload.name}`);

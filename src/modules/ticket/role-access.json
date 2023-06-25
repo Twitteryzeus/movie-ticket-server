@@ -1,4 +1,5 @@
 {
   "CREATE": ["USER"],
-  "ANALYTICS": ["ADMIN"]
+  "ANALYTICS": ["ADMIN"],
+  "VIEW": ["USER"]
 }

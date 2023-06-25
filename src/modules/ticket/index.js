@@ -6,5 +6,6 @@ const roleAccess = require('./role-access.json');
 
 router.post('/ticket/create', decodeJWT, roleBasedCheck(roleAccess.CREATE), ticketController.create);
 router.get('/ticket/analytics', decodeJWT, roleBasedCheck(roleAccess.ANALYTICS), ticketController.analytics);
+router.get('/ticket/view/:id', decodeJWT, roleBasedCheck(roleAccess.VIEW), ticketController.view);
 
 module.exports = router;
