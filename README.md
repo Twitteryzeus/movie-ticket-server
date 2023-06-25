@@ -29,7 +29,7 @@ Getting up and running is as easy as 1, 2, 3.
 2. Install your dependencies
 
     ```
-    cd path/to/rise-server; npm install
+    cd path/to/movie-ticket-server; npm install
     ```
 
 3. Start your app
