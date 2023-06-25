@@ -3,6 +3,12 @@ const { sequelize } = require('../../../models');
 const Joi = require('joi');
 const showServiceFunctions = require('../../show/service');
 
+/**
+ * Creates a new movie and along with that adds a show for this movie.
+ * 
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express request object.
+ */
 const create = async (req, res) => {
   const response = {
     message: 'Movie created successfully!',

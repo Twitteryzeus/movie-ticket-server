@@ -3,6 +3,12 @@ const logger = require("../../../utils/logger");
 const { isEmpty } = require('lodash');
 const ticketService = require('../service');
 
+/**
+ * Gives a the analytics of a how movie has performed profit and visibility wise.
+ * 
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express request object.
+ */
 const analytics = async (req, res) => {
   const response = {
     message: 'Analytics fetched successfully!',

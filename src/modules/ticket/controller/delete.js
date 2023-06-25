@@ -3,6 +3,12 @@ const { sequelize } = require("../../../models");
 const logger = require("../../../utils/logger");
 const moment = require("moment");
 
+/**
+ * Deletes the movie ticket if the show has not started yet.
+ * 
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express request object.
+ */
 const deleteTicket = async (req, res) => {
   const response = {
     message: 'Ticket deleted successfully!',

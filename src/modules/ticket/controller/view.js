@@ -2,6 +2,12 @@ const Joi = require("joi");
 const { sequelize } = require("../../../models");
 const logger = require("../../../utils/logger");
 
+/**
+ * Gets the detail of the ticket requested by the user.
+ * 
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express request object.
+ */
 const view = async (req, res) => {
   const response = {
     message: 'Ticket fetched successfully!',

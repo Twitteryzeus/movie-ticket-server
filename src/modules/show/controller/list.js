@@ -4,6 +4,12 @@ const logger = require("../../../utils/logger");
 const { Op } = require('sequelize');
 const moment = require('moment');
 
+/**
+ * Gives a list of the shows available for the given movie.
+ * 
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express request object.
+ */
 const list = async (req, res) => {
   const response = {
     message: 'Show list fetched successfully!',
