@@ -31,7 +31,7 @@ const create = async (req, res) => {
     if (error) {
       response.message = error?.message;
       response.success = false;
-      response.status = 500;
+      response.status = 400;
 
       logger.error(`ERROR > TICKET > CREATE > ${error.message}`);
       return res.status(response.status).json(response);
