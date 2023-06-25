@@ -44,10 +44,14 @@ const analytics = async (req, res) => {
     if(query.type === "profit") {
       if(query.method === "db-aggregation") {
         response.data = await ticketService.dbAggregationProfitMethod(req);
+      } else {
+        response.data = await ticketService.algorithmProfit(req);
       }
     } else {
       if(query.method === "db-aggregation") {
         response.data = await ticketService.dbAggregationVisitMethod(req);
+      } else {
+        response.data = await ticketService.algorithmVisit(req);
       }
     }
 
