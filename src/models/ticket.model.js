@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     seatBooked: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   }, {

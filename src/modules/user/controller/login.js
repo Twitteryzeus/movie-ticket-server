@@ -8,7 +8,7 @@ const login = async (req, res) => {
   const response = {
     message: 'Login Successfully',
     success: true,
-    code: 200,
+    status: 200,
     data: ''
   }
 
@@ -24,10 +24,10 @@ const login = async (req, res) => {
     if (error) {
       response.message = error?.message;
       response.success = false;
-      response.code = 500;
+      response.status = 500;
 
       logger.error(`ERROR > LOGIN > ${error.message}`);
-      return res.status(response.code).json(response);
+      return res.status(response.status).json(response);
     }
 
     payload.role = config.adminEmail === payload.email ? 'ADMIN' : 'USER';
@@ -38,11 +38,11 @@ const login = async (req, res) => {
   } catch (error) {
     response.message = error?.message;
     response.success = false;
-    response.code = 500;
+    response.status = 500;
     logger.error(`ERROR > LOGIN > ${error.message}`);
   }
 
-  return res.status(response.code).json(response);
+  return res.status(response.status).json(response);
 }
 
 module.exports = login;

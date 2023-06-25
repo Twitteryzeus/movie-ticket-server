@@ -26,10 +26,10 @@ const create = async (req, res) => {
     if (error) {
       response.message = error?.message;
       response.success = false;
-      response.code = 500;
+      response.status = 500;
 
       logger.error(`ERROR > MOVIE > CREATE > ${error.message}`);
-      return res.status(response.code).json(response);
+      return res.status(response.status).json(response);
     }
 
     const movieInstance = await MovieModel.create(payload);
@@ -40,7 +40,7 @@ const create = async (req, res) => {
   } catch (error) {
     response.message = error?.message;
     response.success = false;
-    response.code = 500;
+    response.status = 500;
     logger.error(`ERROR > MOVIE > CREATE > ${error.message}`);
   }
 

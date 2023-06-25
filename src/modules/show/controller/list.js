@@ -1,6 +1,8 @@
 const { sequelize } = require('../../../models');
 const Joi = require('joi');
 const logger = require("../../../utils/logger");
+const { Op } = require('sequelize');
+const moment = require('moment');
 
 const list = async (req, res) => {
   const response = {
@@ -23,15 +25,18 @@ const list = async (req, res) => {
     if (error) {
       response.message = error?.message;
       response.success = false;
-      response.code = 500;
+      response.status = 500;
 
       logger.error(`ERROR > SHOW > LIST > ${error.message}`);
-      return res.status(response.code).json(response);
+      return res.status(response.status).json(response);
     }
 
     const showData = await ShowModel.findAll({
       where: {
-        movieId: params.movieId
+        movieId: params.movieId,
+        showTime: {
+          [Op.gte]: moment()
+        }
       },
     });
 
@@ -40,7 +45,7 @@ const list = async (req, res) => {
   } catch (error) {
     response.message = error?.message;
     response.success = false;
-    response.code = 500;
+    response.status = 500;
     logger.error(`ERROR > SHOW > LIST > ${error.message}`);
   }
 

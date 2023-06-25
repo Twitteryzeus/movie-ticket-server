@@ -21,7 +21,7 @@ const list = async (req, res) => {
   } catch (error) {
     response.message = error?.message;
     response.success = false;
-    response.code = 500;
+    response.status = 500;
     logger.error(`ERROR > MOVIE > LIST > ${error.message}`);
   }
 
