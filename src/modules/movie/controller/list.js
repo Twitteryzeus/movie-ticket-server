@@ -1,6 +1,12 @@
 const { sequelize } = require('../../../models');
 const logger = require('../../../utils/logger');
 
+/**
+ * Gives a list of the movie available.
+ * 
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express request object.
+ */
 const list = async (req, res) => {
   const response = {
     message: 'Movie list fetched successfully!',

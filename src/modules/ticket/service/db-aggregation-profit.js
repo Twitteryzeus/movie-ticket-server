@@ -4,6 +4,12 @@ const { QueryTypes } = require('sequelize');
 const { pick } = require('lodash');
 const logger = require('../../../utils/logger');
 
+/**
+ * Gets monthly report of how a movie has performed profit wise. Using database aggregation methods.
+ * 
+ * @param {Request} req - The Express request object. 
+ * @returns {Promise<Array<Object>>} - Returns the monthly report. 
+ */
 const dbAggregationProfitMethod = async (req) => {
   try {
     const { query, user } = req;

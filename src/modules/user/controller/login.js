@@ -4,6 +4,12 @@ const { generateJWT } = require('../../../utils/authentication');
 const hashFunction = require('../../../utils/hash-function');
 const logger = require('../../../utils/logger');
 
+/**
+ * Perform authentication based on email.
+ * 
+ * @param {Request} req - The Express request object. 
+ * @param {Response} res - The Express response object. 
+ */
 const login = async (req, res) => {
   const response = {
     message: 'Login Successfully',

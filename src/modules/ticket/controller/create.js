@@ -4,6 +4,12 @@ const logger = require('../../../utils/logger');
 const { Op } = require('sequelize');
 const moment = require('moment');
 
+/**
+ * Creates a new ticket with the given payload.
+ * 
+ * @param {Request} req - The Express request object.
+ * @param {Response} res - The Express request object.
+ */
 const create = async (req, res) => {
   const response = {
     message: 'Ticket booked successfully!',

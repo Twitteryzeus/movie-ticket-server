@@ -2,6 +2,12 @@ const logger = require("../../../utils/logger");
 const { sequelize } = require('../../../models');
 const moment = require('moment');
 
+/**
+ * Gets monthly report of how a movie has performed visibility wise. Using javascript data structures and methods.
+ * 
+ * @param {Request} req - The Express request object. 
+ * @returns {Promise<Array<Object>>} - Returns the monthly report. 
+ */
 const algorithmVisit = async (req) => {
   try {
     const { user, query } = req;
