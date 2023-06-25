@@ -45,6 +45,10 @@ const analytics = async (req, res) => {
       if(query.method === "db-aggregation") {
         response.data = await ticketService.dbAggregationProfitMethod(req);
       }
+    } else {
+      if(query.method === "db-aggregation") {
+        response.data = await ticketService.dbAggregationVisitMethod(req);
+      }
     }
 
     logger.info(`Ticket analytics retrieved by ${user.name}`);

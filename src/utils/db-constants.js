@@ -11,5 +11,6 @@ module.exports = {
 
   // Custom Alias
   MONTH: 'month',
-  SUMMARY_PROFIT: 'summaryProfit'
+  SUMMARY_PROFIT: 'summaryProfit',
+  SUMMARY_VISIT: 'summaryVisits'
 }
