@@ -1,0 +1,6 @@
+{
+  "CREATE": ["USER"],
+  "ANALYTICS": ["ADMIN"],
+  "VIEW": ["USER"],
+  "DELETE": ["USER"]
+}
