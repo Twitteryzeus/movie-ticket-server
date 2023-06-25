@@ -1,7 +1,7 @@
 const Joi = require("joi");
-const { sequelize } = require("../../../models");
 const logger = require("../../../utils/logger");
 const { isEmpty } = require('lodash');
+const ticketService = require('../service');
 
 const analytics = async (req, res) => {
   const response = {
@@ -12,8 +12,6 @@ const analytics = async (req, res) => {
   };
 
   try {
-    const { models } = sequelize;
-    const { Show: ShowModel } = models;
     const { user, query } = req;
 
     if (isEmpty(query)) {
@@ -27,8 +25,10 @@ const analytics = async (req, res) => {
 
     const analyticsSchema = Joi.object({
       method: Joi.string().required().valid('db-aggregation', 'algorithm'),
+      type: Joi.string().required().valid('profit', 'visit'),
       startDate: Joi.date().iso().required(),
       endDate: Joi.date().iso().required(),
+      movieId: Joi.number().required()
     });
 
     const { error } = analyticsSchema.validate(query);
@@ -40,6 +40,14 @@ const analytics = async (req, res) => {
       logger.error(`ERROR > TICKET > ANALYTICS > ${error.message}`);
       return res.status(response.status).json(response);
     }
+
+    if(query.type === "profit") {
+      if(query.method === "db-aggregation") {
+        response.data = await ticketService.dbAggregationProfitMethod(req);
+      }
+    }
+
+    logger.info(`Ticket analytics retrieved by ${user.name}`);
   } catch (error) {
     response.message = error?.message;
     response.success = false;
